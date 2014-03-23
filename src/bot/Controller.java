@@ -5,6 +5,11 @@ import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+
 /**
  * Created by hp on 23.03.2014.
  */
@@ -12,10 +17,18 @@ public class Controller {
     private SerialPort serialPortOut;
 
     private Controller() {
+        log = new LinkedList<String>();
+    }
+
+    private LinkedList<String> log;
+
+    private void appendLog(String msg) {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss.zzz");
+        Date date = new Date();
+        log.addFirst(String.format("%t;%s", dateFormat.format(date), msg));
     }
 
     static private Controller self;
-
     static public Controller getInstance() {
         if(self == null)
             self = new Controller();
@@ -89,6 +102,10 @@ public class Controller {
 
     public boolean isConnected() {
         return connected;
+    }
+
+    public LinkedList<String> getLog() {
+        return log;
     }
 
     private static class PortReader implements SerialPortEventListener {

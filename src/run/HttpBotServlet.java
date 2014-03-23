@@ -19,7 +19,7 @@ public class HttpBotServlet extends javax.servlet.http.HttpServlet {
         Controller bot = Controller.getInstance();
         if (act.toLowerCase().equals("mconn")) {
             if (!bot.isConnected())
-                bot.Connect("COM3", null);
+                bot.Connect("COM4", Statistics.getInstance());
         }
         else if (act.toLowerCase().equals("mdisconn")) {
             if (bot.isConnected())

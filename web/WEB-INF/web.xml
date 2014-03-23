@@ -13,4 +13,12 @@
         <servlet-name>HttpBotServlet</servlet-name>
         <url-pattern>/act</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>HttpStatisticsServlet</servlet-name>
+        <servlet-class>run.HttpStatisticsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpStatisticsServlet</servlet-name>
+        <url-pattern>/data</url-pattern>
+    </servlet-mapping>
 </web-app>
